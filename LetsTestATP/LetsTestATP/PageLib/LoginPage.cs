@@ -51,7 +51,7 @@ namespace LetsTestATP.PageLib
         public void ReadLogindata()
         {
             String strDataSheetPath = ConfigurationManager.AppSettings["DataSheetPath"];
-            ExcelLib.PopulateInCollection(@"" + strDataSheetPath + "LoginInfo.xls");
+            ExcelLib.PopulateInCollection(@"" + strDataSheetPath + "LoginInfo.xlsx");
 
             for (int i = 1; i < 10; i++)
             {

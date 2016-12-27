@@ -8,5 +8,6 @@ namespace LetsTestATP.Tests
 {
     class SmokeTests
     {
+        public static string strSnapshot { get; internal set; }
     }
 }

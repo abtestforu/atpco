@@ -1,6 +1,16 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
+using log4net;
+using log4net.Config;
+using OpenQA.Selenium.Support.UI;
+using System.Configuration;
+using OpenQA.Selenium.Support.Events;
+using LetsTestATP.Tests;
 
 namespace LetsTestATP
 {
@@ -30,6 +40,8 @@ namespace LetsTestATP
         {
             try
             {
+                IAlert alert = driver.SwitchTo().Alert();
+
                 alert.Accept();
             }   // try 
             catch (NoAlertPresentException Ex)
@@ -49,7 +61,7 @@ namespace LetsTestATP
 
             String strScreenshotsPath = ConfigurationManager.AppSettings["ScreenshotsPath"];
             Screenshot ss = ((ITakesScreenshot)PropertyCollection.driver).GetScreenshot();
-            String strFilePath = strScreenshotsPath + Smoke_Common.strSnapshot + "_" + DateTime.Now.ToString("ddMMyy_HHmmss") + ".png";
+            String strFilePath = strScreenshotsPath + SmokeTests.strSnapshot + "_" + DateTime.Now.ToString("ddMMyy_HHmmss") + ".png";
             ss.SaveAsFile(strFilePath, System.Drawing.Imaging.ImageFormat.Png);
         }
 

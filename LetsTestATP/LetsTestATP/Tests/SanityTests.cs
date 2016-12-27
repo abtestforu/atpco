@@ -52,7 +52,7 @@ namespace LetsTestATP.Tests
         }
 
         [TestMethod]
-        public void TC_Sanity_A_VerifyMainPage()
+        public void TC_Sanity_A_VerifyHomePage()
         {
             HomePage objMainPage = new HomePage();
             objMainPage.VerifyHomePage();

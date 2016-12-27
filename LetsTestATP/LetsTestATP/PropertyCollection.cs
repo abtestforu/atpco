@@ -21,6 +21,7 @@ namespace LetsTestATP
         public static String strBrowser { get; set; }
         public static String strChromeDriverPath { get; set; }
         public static String strIEDriverPath { get; set; }
+        public static String strFirefoxDriverPath { get; set; }
         public static String strExportPath { get; set; }
 
         public static Boolean isAlertPresent()

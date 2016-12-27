@@ -9,17 +9,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using OpenQA.Selenium;
 
 namespace LetsTestATP.Tests
 {
     [TestClass]
-    class SanityTests
+    public class SanityTests
     {
         public static readonly log4net.ILog logger = log4net.LogManager.GetLogger(typeof(SanityTests));
         public static String strApplicationURL;
         [ClassInitialize]
         public static void ClassInit(TestContext context)
         {
+ 
+            FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(@"D:\EclipseWS\Repo001\LetsTestATP\Drivers\Firefox\", "geckodriver.exe");
+            service.FirefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+            PropertyCollection.driver = new FirefoxDriver(service);
+
+
             FirefoxProfile profile = new FirefoxProfile();
 
             profile.SetPreference("browser.download.manager.alertOnEXEOpen", false);
@@ -27,8 +34,9 @@ namespace LetsTestATP.Tests
             profile.SetPreference("browser.download.manager.focusWhenStarting", false);
             profile.SetPreference("browser.download.dir", "D:\\EclipseWS\\Repo001\\LetsTestATP\\Downloads");
             profile.SetPreference("browser.helperApps.neverAsk.saveToDisk", "application/octet-stream");
-
+            profile.SetPreference("browser.private.browsing.autostart", true);
             var firingDriver = new EventFiringWebDriver(new FirefoxDriver(profile));
+
 
             firingDriver.ExceptionThrown += PropertyCollection.firingDriver_TakeScreenshotOnException;
             PropertyCollection.driver = firingDriver;
@@ -41,12 +49,12 @@ namespace LetsTestATP.Tests
             LoginPage objLoginPage = new LoginPage();
             objLoginPage.ReadLogindata();
 
-            log4net.Config.XmlConfigurator.Configure();
+            XmlConfigurator.Configure();
             BasicConfigurator.Configure();
         }
-
+ 
         [TestInitialize]
-        public void Initialise()
+        public void Initialize()
         {
 
         }
@@ -56,6 +64,7 @@ namespace LetsTestATP.Tests
         {
             HomePage objMainPage = new HomePage();
             objMainPage.VerifyHomePage();
+
             logger.Debug("***********ATP Sanity Test Execution**********");
             logger.Debug("Home Page verified Successfully");
         }
@@ -63,7 +72,7 @@ namespace LetsTestATP.Tests
         [TestCleanup]
         public void CleanUp()
         {
-
+               
             PropertyCollection.driver.Navigate().GoToUrl(PropertyCollection.strApplicationURL);
             PropertyCollection.WaitForPageLoadComplete();
         }

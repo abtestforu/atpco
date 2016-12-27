@@ -54,8 +54,7 @@ namespace LetsTestATP.PageLib
 
         internal void VerifyHomePage()
         {
-            {
-                /* buffer to hold your errors */
+                 /* buffer to hold your errors */
                 StringBuilder errorBuffer = new StringBuilder();
                 try
                 {
@@ -64,8 +63,7 @@ namespace LetsTestATP.PageLib
                     Assert.AreEqual("About ATPCO | ATPCO", PropertyCollection.driver.Title);
                 }
                 catch (Exception ex) { errorBuffer.Append(ex.Message + "\n"); }
-
-            }
+ 
         }
     }
 }

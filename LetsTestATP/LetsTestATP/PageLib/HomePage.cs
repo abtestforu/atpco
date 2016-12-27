@@ -52,6 +52,7 @@ namespace LetsTestATP.PageLib
         [FindsBy(How = How.LinkText, Using = "System")]
         public IWebElement LnkSystem { get; set; }
 
+
         internal void VerifyHomePage()
         {
                  /* buffer to hold your errors */
@@ -60,7 +61,7 @@ namespace LetsTestATP.PageLib
                 {
                     LnkHome.Click();
                     PropertyCollection.WaitForPageLoadComplete();
-                    Assert.AreEqual("About ATPCO | ATPCO", PropertyCollection.driver.Title);
+                    Assert.AreEqual("ATPCO |", PropertyCollection.driver.Title);
                 }
                 catch (Exception ex) { errorBuffer.Append(ex.Message + "\n"); }
  

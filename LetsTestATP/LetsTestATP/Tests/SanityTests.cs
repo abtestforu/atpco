@@ -44,8 +44,6 @@ namespace LetsTestATP.Tests
             PropertyCollection.driver.Manage().Window.Maximize();
             PropertyCollection.driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
 
-            LoginPage objLoginPage = new LoginPage();
-            objLoginPage.ReadLogindata();
 
             XmlConfigurator.Configure();
             BasicConfigurator.Configure();
@@ -65,6 +63,12 @@ namespace LetsTestATP.Tests
 
             logger.Debug("***********ATP Sanity Test Execution**********");
             logger.Debug("Home Page verified Successfully");
+        }
+        [TestMethod]
+        public void TC_Sanity_B_VerifyLogin()
+        {
+            LoginPage objLoginPage = new LoginPage();
+            objLoginPage.ReadLogindata();
         }
 
         [TestCleanup]

@@ -27,19 +27,17 @@ namespace LetsTestATP.Tests
             PropertyCollection.driver = new FirefoxDriver(service);
 
 
-            FirefoxProfile profile = new FirefoxProfile();
+            //FirefoxProfile profile = new FirefoxProfile();
 
-            profile.SetPreference("browser.download.manager.alertOnEXEOpen", false);
-            profile.SetPreference("browser.download.manager.closeWhenDone", true);
-            profile.SetPreference("browser.download.manager.focusWhenStarting", false);
-            profile.SetPreference("browser.download.dir", "D:\\EclipseWS\\Repo001\\LetsTestATP\\Downloads");
-            profile.SetPreference("browser.helperApps.neverAsk.saveToDisk", "application/octet-stream");
-            profile.SetPreference("browser.private.browsing.autostart", true);
-            var firingDriver = new EventFiringWebDriver(new FirefoxDriver(profile));
-
-
-            firingDriver.ExceptionThrown += PropertyCollection.firingDriver_TakeScreenshotOnException;
-            PropertyCollection.driver = firingDriver;
+            //profile.SetPreference("browser.download.manager.alertOnEXEOpen", false);
+            //profile.SetPreference("browser.download.manager.closeWhenDone", true);
+            //profile.SetPreference("browser.download.manager.focusWhenStarting", false);
+            //profile.SetPreference("browser.download.dir", "D:\\EclipseWS\\Repo001\\LetsTestATP\\Downloads");
+            //profile.SetPreference("browser.helperApps.neverAsk.saveToDisk", "application/octet-stream");
+            //profile.SetPreference("browser.private.browsing.autostart", true);
+            //var firingDriver = new EventFiringWebDriver(new FirefoxDriver(profile));
+            //firingDriver.ExceptionThrown += PropertyCollection.firingDriver_TakeScreenshotOnException;
+            //PropertyCollection.driver = firingDriver;
 
             PropertyCollection.strApplicationURL = ConfigurationManager.AppSettings["ApplicationURL_PRO"];
             PropertyCollection.driver.Navigate().GoToUrl(PropertyCollection.strApplicationURL);

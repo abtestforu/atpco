@@ -28,6 +28,12 @@ namespace LetsTestATP.PageLib
         [FindsBy(How = How.Id, Using = "edit-search-block-form--2")]
         public IWebElement SearchBox { get; set; }
 
+        [FindsBy(How = How.Id, Using = "edit-submit--2")]
+        public IWebElement SubmitBtn { get; set; }
+
+        [FindsBy(How = How.Id, Using = "edit-keys")]
+        public IWebElement SearchBox2 { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//*[@id='logo']/img")]
         public IWebElement ATPCOIMG { get; set; }
 
@@ -65,6 +71,21 @@ namespace LetsTestATP.PageLib
                 }
                 catch (Exception ex) { errorBuffer.Append(ex.Message + "\n"); }
  
+        }
+
+        public void SearchBoxVerification()
+        {
+            StringBuilder errorBuffer = new StringBuilder();
+            try
+            {
+                SearchBox.Click();
+                PropertyCollection.WaitForPageLoadComplete();
+                SearchBox.SendKeys("Ticket");
+                SubmitBtn.Click();
+                
+                Assert.AreEqual("Search | ATPCO", PropertyCollection.driver.Title);
+            }
+            catch (Exception ex) { errorBuffer.Append(ex.Message + "\n"); }
         }
     }
 }
